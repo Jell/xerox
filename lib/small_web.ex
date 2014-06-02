@@ -4,8 +4,9 @@ defmodule SmallWeb do
   # See http://elixir-lang.org/docs/stable/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    IO.puts "Running MyPlug with Cowboy on http://localhost:4000"
-    Plug.Adapters.Cowboy.http MyPlug, []
+    port = System.get_env("PORT") || "4000"
+    IO.puts "Running MyPlug with Cowboy on http://localhost:"<>port
+    Plug.Adapters.Cowboy.http MyPlug, [{:port, port}]
     SmallWeb.Supervisor.start_link
   end
 end
