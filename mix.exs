@@ -12,7 +12,7 @@ defmodule SmallWeb.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:cowboy, :plug],
+    [applications: [:cowboy, :plug, :postgrex, :ecto],
      mod: {SmallWeb, []}]
   end
 
@@ -27,6 +27,8 @@ defmodule SmallWeb.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [{:cowboy, github: "extend/cowboy"},
-     {:plug, "~> 0.4.2"}]
+     {:plug, "~> 0.4.2"},
+     {:postgrex, ">= 0.0.0"},
+     {:ecto, "~> 0.2.0"}]
   end
 end
